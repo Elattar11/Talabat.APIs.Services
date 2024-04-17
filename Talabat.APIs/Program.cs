@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Talabat.APIs.Helpers;
 using Talabat.Core.Entities;
 using Talabat.Core.Repositories.Contract;
 using Talabat.Repository;
@@ -41,6 +42,9 @@ namespace Talabat.APIs
 			//lama 7d yetlop obj mn class be3mel implement l IGenericRepository mn type mo3en 
 			//e3mel create l obj mn IGenericRepository mn nfs al type 
 
+			//builder.Services.AddAutoMapper(M => M.AddProfile(new MappingProfiles()));
+
+			builder.Services.AddAutoMapper(typeof(MappingProfiles));
 			#endregion
 
 
