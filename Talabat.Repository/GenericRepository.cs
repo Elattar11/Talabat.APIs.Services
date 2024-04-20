@@ -20,7 +20,7 @@ namespace Talabat.Repository
 			_dbContext = dbContext;
 		}
 		#region Normal Way [Not Specifications]
-		public async Task<IEnumerable<T>> GetAllAsync()
+		public async Task<IReadOnlyList<T>> GetAllAsync()
 		{
 			#region Get Categories and Brands of Products
 
@@ -58,7 +58,7 @@ namespace Talabat.Repository
 		{
 			return await ApplySpecifications(spec).FirstOrDefaultAsync();
 		}
-		public async Task<IEnumerable<T>> GetAllWithSpecAsync(ISpecifications<T> spec)
+		public async Task<IReadOnlyList<T>> GetAllWithSpecAsync(ISpecifications<T> spec)
 		{
 			return await ApplySpecifications(spec).ToListAsync();
 		}
