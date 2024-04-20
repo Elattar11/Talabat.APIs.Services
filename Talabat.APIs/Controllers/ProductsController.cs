@@ -37,6 +37,12 @@ namespace Talabat.APIs.Controllers
 		/*Get Product By ID End Point*/
 		//  /api/Products/1
 
+
+		//Improving Swagger Documentation
+
+		[ProducesResponseType(typeof(ProductToReturnDto) , StatusCodes.Status200OK)]
+		[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
+
 		[HttpGet("{id}")] 
 
 		public async Task<ActionResult<ProductToReturnDto>> GetProduct(int id)
