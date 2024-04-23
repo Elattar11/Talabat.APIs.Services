@@ -66,6 +66,11 @@ namespace Talabat.Repository
 		//Helper Method
 		private IQueryable<T> ApplySpecifications(ISpecifications<T> spec)
 			=> SpecificationEvaluator<T>.GetQuery(_dbContext.Set<T>(), spec);
+
+		public async Task<int> GetCountAsync(ISpecifications<T> spec)
+		{
+			return await ApplySpecifications(spec).CountAsync();
+		}
 		#endregion
 
 
