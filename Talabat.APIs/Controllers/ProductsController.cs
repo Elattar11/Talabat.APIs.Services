@@ -37,6 +37,7 @@ namespace Talabat.APIs.Controllers
 		public async Task<ActionResult<Pagination<ProductToReturnDto>>> GetProducts([FromQuery] ProductSpecParams specParams)
 		{ 
 			var spec = new ProductWithBrandsAndCategoriesSpecifications(specParams);
+
 			var products = await _productsRepo.GetAllWithSpecAsync(spec);
 
 			var data = _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductToReturnDto>>(products);
