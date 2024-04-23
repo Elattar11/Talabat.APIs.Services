@@ -24,6 +24,10 @@ namespace Talabat.Repository
 			else if (specification.OrderByDesc is not null)
 				query = query.OrderByDescending(specification.OrderByDesc);
 
+
+			if (specification.isPaginationEnabled)
+				query = query.Skip(specification.Skip).Take(specification.Take);
+
 			//query = _dbContext.Set<Product>().Where(P => P.Id = 10)
 
 			//Includes
