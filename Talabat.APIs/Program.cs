@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using StackExchange.Redis;
 using Talabat.APIs.Errors;
 using Talabat.APIs.Extensions;
 using Talabat.APIs.Helpers;
@@ -35,6 +36,12 @@ namespace Talabat.APIs
 				op.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 			});
 
+			builder.Services.AddSingleton<IConnectionMultiplexer>((serviceProvider) =>
+			{
+				var connection = builder.Configuration.GetConnectionString("Redis");
+				return ConnectionMultiplexer.Connect(connection);
+			});
+
 			//builder.Services.AddScoped<IGenericRepository<Product>, IGenericRepository<Product>>();
 			//builder.Services.AddScoped<IGenericRepository<ProductBrand>, IGenericRepository<ProductBrand>>();
 			//builder.Services.AddScoped<IGenericRepository<ProductCategory>, IGenericRepository<ProductCategory>>();
@@ -42,6 +49,8 @@ namespace Talabat.APIs
 			//Allow DI Generic for all modules 
 
 			builder.Services.AddApplicationServices();
+
+
 
 			#endregion
 
