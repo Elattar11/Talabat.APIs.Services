@@ -10,6 +10,8 @@ namespace Talabat.APIs.Extensions
 	{
 		public static IServiceCollection AddApplicationServices(this IServiceCollection services)
 		{
+			services.AddScoped(typeof(IBasketRepository), typeof(BasketRepository));
+
 			services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 			//lama 7d yetlop obj mn class be3mel implement l IGenericRepository mn type mo3en 
 			//e3mel create l obj mn IGenericRepository mn nfs al type 
