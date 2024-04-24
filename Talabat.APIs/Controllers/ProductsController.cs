@@ -82,7 +82,7 @@ namespace Talabat.APIs.Controllers
 
 		}
 
-		[HttpGet("{id}")]
+		[HttpGet("{categories}")]
 
 		public async Task<ActionResult<IReadOnlyList<ProductCategory>>> GetCategories()
 		{
